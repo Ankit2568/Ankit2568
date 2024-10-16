@@ -1,0 +1,614 @@
+====================Queue(I)====================
+
+
+
+
+  1.2						 1.5				      		1.5	
+Collection(I)  -----------> Queue(I) --------------> PriorityQueue(C)
+	|	(LIST) (I)						|						 			      
+	|							|	 
+	|							|												
+	|							|									 
+	|							|									 
+	|							|									 
+	|							|									 
+	|		1.5 					|									 
+	LinkedList(C) -------------	|
+		* LinkedList based implementation of Queue follows FIFO order.
+													
+
+
+Queue(I):
+1. it's a child interface of Collection(I).
+2. If we want to represent a group of individual objects prior to processing then we should go for Queue.
+3. Queue follows FIFO order but we can implement priority order also. (PriorityQueue)
+
+
+eg: before sending a mail all e-mail ids we stored somewhere and in which order we saved in the same order e-mail should delivered. 
+(FIFO) for this requirement Queue is the best choice.
+
+
+
+
+Queue (I) interface methods:
+
+
+boolean	offer(Object o)
+	-- to add  an object into Queue.
+	
+	Add(); 
+	-- -- to add  an object into Queue.
+
+
+poll()
+	-- return and removes the head of this queue. if this queue is empty then returns null.
+
+
+remove()
+	--return and removes the head of this queue. if this queue is empty then returns RE : NoSuchElementException.
+	
+	
+	
+peek()
+	--return head element of queue, if this queue is empty then returns null
+	
+element()
+	--return head element of queue, if this queue is empty then returns RE : NoSuchElementException.
+	
+	
+	
+
+PriorityQueue(C)
+
+1. PriorityQueue is representing group of individual object according to some priority prior to processing according to some priority.
+2. Default Priority is natural sorting order. Or we can use customized sorting order defined by Comparator.
+3. Duplicate objects are allowed.
+4. Null insertion is not possible, not single entry.
+5. homogeneous : allowed.
+
+
+
+
+Constructor:
+
+PriorityQueue()
+	Creates a PriorityQueue with the default initial capacity (11) that orders its elements according to their natural ordering.
+	
+PriorityQueue(Comparator<? super E> comparator)
+	Creates a PriorityQueue with the default initial capacity and whose elements are ordered according to the specified comparator.
+	
+PriorityQueue(int initialCapacity)
+	Creates a PriorityQueue with the specified initial capacity that orders its elements according to their natural ordering.
+
+PriorityQueue(int initialCapacity, Comparator<? super E> comparator)
+	Creates a PriorityQueue with the specified initial capacity that orders its elements according to the specified comparator.
+
+PriorityQueue(PriorityQueue c)
+	Creates a PriorityQueue containing the elements in the specified priority queue.
+
+PriorityQueue(SortedSet c)
+	Creates a PriorityQueue containing the elements in the specified sorted set.
+	
+PriorityQueue(Collection c)
+	Creates a PriorityQueue containing the elements in the specified collection.
+
+
+
+
+
+
+********* Adding elements in Queue. (duplicate are also allowed.
+
+Add();
+offer();
+
+Example:
+
+import java.util.*;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+		System.out.println("Elements of the Queue: "+q);
+	
+	}
+
+}
+
+
+
+********* Retrieving head elements from  Queue.
+
+peek()
+	--return head element of queue, if this queue is empty then returns null
+	
+element()
+	--return head element of queue, if this queue is empty then returns RE : NoSuchElementException.
+
+
+Example1: when there is a elements in Queue
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+		
+		System.out.println(q.element()); // A
+		System.out.println(q.peek());  // A
+		
+	}
+
+}
+OUTPUT:
+Elements of the Queue: [A, B, C, C]
+A
+A
+
+
+Example2: when Queue is empty.
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+					
+		System.out.println("Elements of the Queue: "+q);
+		
+		//System.out.println(q.element());  // java.util.NoSuchElementException
+		System.out.println(q.peek());  // null
+
+	}
+
+}
+OUTPUT:
+
+
+**** Return and Remove elements from Queue.
+
+poll()
+	-- return and removes the head of this queue. if this queue is empty then returns null.
+
+
+remove()
+	--return and removes the head of this queue. if this queue is empty then returns RE : NoSuchElementException.
+
+
+
+Example1:
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+		
+		//System.out.println(q.remove());
+		//System.out.println("Elements of the Queue: "+q);
+		
+		
+		System.out.println(q.poll());
+		System.out.println("Elements of the Queue: "+q);
+		
+	}
+
+}
+OUTPUT:
+Elements of the Queue: [A, B, C, C]
+A
+Elements of the Queue: [B, C, C]
+
+
+Example2: Return and Remove elements from Queue, when Queue is empty.
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+		
+		System.out.println(q.remove());  //  java.util.NoSuchElementException
+		System.out.println("Elements of the Queue: "+q);
+		
+		
+		
+		  System.out.println(q.poll()); //null
+		  System.out.println("Elements of the Queue: "+q); 
+		 
+	}
+
+}
+
+
+****** Retrieving data using Iterator
+
+
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+		
+		Iterator itr= q.iterator();
+		
+		while(itr.hasNext()) {
+			
+			System.out.println(itr.next());
+		}
+		
+	}
+
+}
+OUTPUT:
+Elements of the Queue: [A, B, C, C]
+A
+B
+C
+C
+
+Example2: retrieving data using for each loop
+
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+		
+		/*
+		 * Iterator itr= q.iterator();
+		 * 
+		 * while(itr.hasNext()) {
+		 * 
+		 * System.out.println(itr.next()); }
+		 */
+		
+		for (Object o: q) {
+			
+			System.out.println(o);
+			
+		}
+		
+	}
+
+}
+
+***** LinkedList Vs  PriorityQueue
+
+***** PriorityQueue only allow homogeneous data.
+
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add(100);
+		
+		System.out.println("Elements of the Queue: "+q);
+	
+	}
+
+}
+
+OUTPUT:
+Exception in thread "main" java.lang.ClassCastException: class java.lang.String cannot be cast to class java.lang.Integer (java.lang.String and java.lang.Integer are in module java.base of loader 'bootstrap')
+	at java.base/java.lang.Integer.compareTo(Integer.java:71)
+
+
+***** LinkedList allow hetrogeneous data.
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		Queue q=new LinkedList();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add(100);
+		q.add("C");
+		
+		System.out.println("Elements of the LinkedList: "+q);
+	
+	}
+
+}
+
+OUTPUT:
+Elements of the LinkedList: [A, B, C, 100, C]
+
+
+******** element() and peek() with LinkedList when LinkedList has elements
+
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		Queue q=new LinkedList();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add(100);
+		q.add("C");
+		
+		System.out.println("Elements of the LinkedList: "+q);
+		
+		System.out.println(nt());  
+		System.out.println(q.peek(q.eleme));  
+	
+	}
+
+}
+OUTPUT:
+Elements of the LinkedList: [A, B, C, 100, C]
+A
+A
+
+
+******** element() and peek() with LinkedList when LinkedList is empty.
+
+
+import java.util.*;
+import java.util.PriorityQueue;
+
+class Test {
+	
+	public static void main(String[] args) {
+		
+		Queue q=new LinkedList();
+		
+		System.out.println("Elements of the LinkedList: "+q);
+		
+		System.out.println(q.element());  // java.util.NoSuchElementException
+		System.out.println(q.peek());  // null
+	
+	}
+
+}
+
+******** remove() and poll() with LinkedList
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		Queue q=new LinkedList();
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("C");
+		
+			
+		System.out.println("Elements of the LinkedList: "+q);
+		
+		System.out.println(q.remove());
+		System.out.println("Elements of the Queue: "+q);
+		
+		
+		System.out.println(q.poll());
+		System.out.println("Elements of the LinkedList: "+q);
+		
+	}
+
+}
+OUTPUT:
+Elements of the LinkedList: [A, B, C, C]
+A
+Elements of the Queue: [B, C, C]
+B
+Elements of the LinkedList: [C, C]
+
+
+
+
+******* change the elements priority.
+
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		PriorityQueue q=new PriorityQueue(20, new compt());
+		
+		q.offer("A");
+		q.offer("B");
+		q.offer("C");
+		q.add("D");
+		
+			
+		System.out.println("Elements of the Queue: "+q);
+				
+		
+	}
+
+}
+
+class compt implements Comparator<String>{
+
+	@Override
+	public int compare(String o1, String o2) {
+		// TODO Auto-generated method stub
+		return -o1.compareTo(o2);
+	}
+	
+}
+
+OUTPUT:
+Elements of the Queue: [D, C, B, A]
+
+
+
+
+
+
+
+****** Collection object in PriorityQueue
+
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		
+		ArrayList<Integer> al=new ArrayList<Integer>(10);
+		
+		al.add(10);
+		al.add(20);
+		
+		PriorityQueue<Integer> q=new PriorityQueue<Integer>(al);
+		
+		q.offer(3);
+		q.offer(5);
+		
+		
+		
+		System.out.println("Size of the Queue: "+q.size());
+		System.out.println("Elements of the Queue: "+q);
+		System.out.println('\n');
+		
+	
+		
+	}
+
+}
+OUTPUT:
+Size of the Queue: 4
+Elements of the Queue: [3, 5, 10, 20]
+
+
+
+
+
+
+
+***** Object data in PriorityQueue.
+
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		
+		
+		PriorityQueue<Employee> q=new PriorityQueue<Employee>(20, new compt());
+		
+		q.add(new Employee("ajay", 500));
+		q.add(new Employee("Raja", 400));
+		q.add(new Employee("sumit", 300));
+		q.offer(new Employee("naman", 3000));
+		q.offer(new Employee("sameer", 5000));
+		q.add(new Employee("anu", 400));
+		
+		
+		//q.offer(null);
+		
+		System.out.println("Size of the Queue: "+q.size());
+		
+		System.out.println('\n');
+		System.out.println(q.poll());
+		System.out.println('\n');
+		System.out.println("Elements of the Queue: "+q);
+		
+		
+	}
+
+}
+
+class compt implements Comparator<Employee>{
+
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		// TODO Auto-generated method stub
+		return o2.salary -o1.salary;
+	}
+	
+}
+
+
+********* set the priority of elements with their name in above example.

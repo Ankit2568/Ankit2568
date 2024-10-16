@@ -1,0 +1,63 @@
+Relationship in Java
+====================
+
+=> In we want to prepare the application effectively then we  have to apply design pattern over the application.
+   i.e. relationship between the classes and entities where application development is become easy for us.
+
+Inheritance
+-----------
+
+class Person
+{
+	String name;
+	String address;
+	int mobile;
+	String email;
+}
+
+class Student extends Person
+{
+ 	int hallTicketNumber;
+}
+
+class Employee extends Person
+{
+	int employeeId;
+	Account account;
+}
+
+
+There are 3 types of relationship in java:-
+-----------------------------------------
+	
+	-> HAS-A Relationship
+	-> IS-A Relationship
+	-> USES-A Relationship
+
+HAS-A Relationship
+------------------
+	HAS-A Relationship provide association in Java application, It will provide some following advantages:-
+
+		-> Communication between entities
+		-> data navigation betwnn entities
+		-> code Reusability
+
+There are 4 types of association
+--------------------------------
+
+	-> One-To-One 	Association (Completed with Example of Encapsulation)
+	-> One-To-Many 	Association
+	-> Many-To-One 	Association
+	-> Many-To-Many Association
+
+
+IS-A Relationship 
+-----------------
+
+
+
+
+
+
+
+
